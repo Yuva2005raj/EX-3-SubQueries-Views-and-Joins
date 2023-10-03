@@ -1,4 +1,5 @@
 # EX 3 SubQueries, Views and Joins 
+
 # AIM:
 To create a database and execute DDL queries like views and joins using SQL.
 
