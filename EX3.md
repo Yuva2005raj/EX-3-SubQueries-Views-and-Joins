@@ -1,4 +1,6 @@
 # EX 3 SubQueries, Views and Joins 
+# AIM:
+To create a database and execute DDL queries like views and joins using SQL.
 
 
 ## Create employee Table
@@ -69,45 +71,75 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 
 
 ### QUERY:
+```
+SQL> SELECT ename FROM emp1 WHERE sal > (SELECT sal FROM emp1 WHERE empno = 7566);
+```
 
 
 ### OUTPUT:
+![exp3_DBMS-1](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/d0f7db74-6bc2-4a22-8ad5-16bc9e195e0c)
+
 
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
+```
+SQL> SELECT ename, job, sal FROM emp1 WHERE sal = (SELECT min(sal) FROM emp1);
+```
 
 
 ### OUTPUT:
+![exp3_DBMS-2](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/ed351ca3-5f99-49c9-8226-1ceb48ba0d1c)
+
 
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
 ### QUERY:
+```
+SQL> SELECT ename, job FROM emp1 WHERE deptno = 10 AND job IN (SELECT job FROM emp1 WHERE job = 'SALES');
+```
 
 
 ### OUTPUT:
+![exp3_DBMS-3](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/8a59b4b5-3c38-493d-9d8b-9f7fa5660806)
+
 
 
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
 ### QUERY:
+```
+SQL> CREATE VIEW empv5 AS SELECT empno, ename, job FROM emp1 WHERE deptno = 10;
+```
 
 
 ### OUTPUT:
+![exp3_DBMS-4](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/b7647e61-8f53-4815-997d-d5ea10275acf)
+
 
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
+```
+SQL> CREATE VIEW empv30 AS SELECT empno AS "EMPLOYEE NUMBER", ename AS "EMPLOYEE NAME", sal AS "SALARY" FROM emp1 WHERE deptno = 30;
+```
+
 
 
 ### OUTPUT:
+![exp3_DBMS-5](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/f9bbb753-f1d4-46a4-9e6c-7248b68c20fd)
 
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
+```
+SQL> UPDATE empv5 SET sal = sal * 1.1 WHERE job = 'CLERK';
+```
 
 
 ### OUTPUT:
+![exp3_DBMS-6](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/791da582-532f-479a-8d19-8b33e0f89fdf)
+
 
 ## Create a Customer1 Table
 ```sql
@@ -140,28 +172,53 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 ### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 
 ### QUERY:
-
+```
+SQL> SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name", salesman1.city AS "City" FROM salesman1 INNER JOIN customer1 ON salesman1.city = customer1.city;
+```
 
 ### OUTPUT:
+![exp3_DBMS-7](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/fd5d6858-ee23-44a2-86ef-e0459b0a491f)
+
 
 ### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
 
 
 ### QUERY:
+```
+SQL> SELECT customer1.cust_name AS "Customer Name", customer1.city AS "Customer City", salesman1.commission AS "Commission" FROM salesman1 INNER JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id WHERE salesman1.commission > 0.13;
+```
 
 
 ### OUTPUT:
+![exp3_DBMS-8](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/04d45e5c-1db2-4009-a9ff-2e056db19c7a)
+
 
 ### Q9) Perform Natural join on both tables
 
 ### QUERY:
-
+```
+SQL> SELECT * FROM customer1 NATURAL JOIN salesman1;
+```
 
 ### OUTPUT:
+![exp3_DBMS-9](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/4133eb26-fc44-4903-9629-6ce7863c07a6)
+
 
 ### Q10) Perform Left and right join on both tables
 
 ### QUERY:
+```
+SQL> SELECT * FROM salesman1 LEFT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
+SQL> SELECT * FROM salesman1 RIGHT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
+```
 
 
 ### OUTPUT:
+![exp3_DBMS-10(1)](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/b0ae5fee-adb6-41d2-938e-1244e2956504)
+
+
+![exp3_DBMS-10(2)](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/464eec89-10b8-4ffe-af85-c12146966ff3)
+
+
+## RESULT:
+Thus, DDL queries like views and joins using SQL has been implemented successfully.
