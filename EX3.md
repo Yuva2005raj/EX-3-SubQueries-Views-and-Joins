@@ -1,9 +1,7 @@
 # EX 3 SubQueries, Views and Joins 
-
-# AIM:
-To create a database and execute DDL queries like views and joins using SQL.
-
-
+## Date: 18/08/23
+## AIM: 
+To create a manager database and execute DML queries using SQL.
 ## Create employee Table
 ```sql
 CREATE TABLE EMP (EMPNO NUMBER(4) PRIMARY KEY,ENAME VARCHAR2(10),JOB VARCHAR2(9),MGR NUMBER(4),HIREDATE DATE,SAL NUMBER(7,2),COMM NUMBER(7,2),DEPTNO NUMBER(2));
@@ -72,75 +70,63 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 
 
 ### QUERY:
-```
-SQL> SELECT ename FROM emp1 WHERE sal > (SELECT sal FROM emp1 WHERE empno = 7566);
-```
 
+![270762717-1848b392-372d-4111-af2d-25daf5458864](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/e0c5e121-2f21-400c-bdbd-742bc72395a8)
 
 ### OUTPUT:
-![exp3_DBMS-1](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/d0f7db74-6bc2-4a22-8ad5-16bc9e195e0c)
 
+![270762784-ee7dd795-bf87-4dff-aca9-b80307477ddd](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/d39c1f65-15cf-4135-b98d-7a09420e65a8)
 
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
-```
-SQL> SELECT ename, job, sal FROM emp1 WHERE sal = (SELECT min(sal) FROM emp1);
-```
 
+![270763155-2c78d720-f077-4843-bbbd-cefb0e36afcf](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/20e57d2d-be41-4e9b-a0ff-391322185a5f)
 
 ### OUTPUT:
-![exp3_DBMS-2](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/ed351ca3-5f99-49c9-8226-1ceb48ba0d1c)
 
+![270763212-0ca9e7dc-c9b6-45c6-b7a0-bf123d815295](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/da6966ea-7913-4607-a0de-bbf2218f63ed)
 
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
 ### QUERY:
-```
-SQL> SELECT ename, job FROM emp1 WHERE deptno = 10 AND job IN (SELECT job FROM emp1 WHERE job = 'SALES');
-```
 
+![270764132-ea1201a0-53bc-436b-b815-3889759afcff](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/8040d921-3ec1-4b4d-b07d-354dc6ac442b)
 
 ### OUTPUT:
-![exp3_DBMS-3](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/8a59b4b5-3c38-493d-9d8b-9f7fa5660806)
 
-
+![270764187-7376ae95-bab6-4739-abd7-bdc5e8a727dd](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/eb4207d6-e80f-4a1d-a2b3-2c68dd2cf567)
 
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
 ### QUERY:
-```
-SQL> CREATE VIEW empv5 AS SELECT empno, ename, job FROM emp1 WHERE deptno = 10;
-```
 
+![270764614-4c3e781f-8787-461d-b2ee-162f5222abd9](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/b3079e4f-76af-4a24-9763-d1343b18c59a)
 
 ### OUTPUT:
-![exp3_DBMS-4](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/b7647e61-8f53-4815-997d-d5ea10275acf)
 
+![270764656-753d1db9-8955-4b97-b850-43622886968b](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/d535ff3c-2aef-4a29-9dbd-8395d922f290)
 
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
-```
-SQL> CREATE VIEW empv30 AS SELECT empno AS "EMPLOYEE NUMBER", ename AS "EMPLOYEE NAME", sal AS "SALARY" FROM emp1 WHERE deptno = 30;
-```
 
-
+![270765070-3551ed65-3cb5-4846-b817-48436b507530](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/1bf0b0de-1319-4412-90f2-cbb02d9a487c)
 
 ### OUTPUT:
-![exp3_DBMS-5](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/f9bbb753-f1d4-46a4-9e6c-7248b68c20fd)
+
+![270765159-026712b5-02b2-40d6-a757-cec5bc08890d](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/21982e49-ac55-4941-8429-449933a7946c)
+
 
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
-```
-SQL> UPDATE empv5 SET sal = sal * 1.1 WHERE job = 'CLERK';
-```
 
+![270767939-d83bbdcd-83a3-427e-bd2b-e799958b055d](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/2d5e4834-3d3e-4a1d-844d-c6a89c876a4f)
 
 ### OUTPUT:
-![exp3_DBMS-6](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/791da582-532f-479a-8d19-8b33e0f89fdf)
 
+![270767871-6941b531-33ed-41dc-b6f4-9e8bcc0dd113](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/bf1071f6-d4d2-4e96-bdf5-a06de3b81637)
 
 ## Create a Customer1 Table
 ```sql
@@ -173,53 +159,52 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 ### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 
 ### QUERY:
-```
-SQL> SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name", salesman1.city AS "City" FROM salesman1 INNER JOIN customer1 ON salesman1.city = customer1.city;
-```
+
+![270771248-20c63405-1555-444c-8d92-daee8ad9f52d](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/eb4c1493-35db-458f-9cae-f69832406402)
 
 ### OUTPUT:
-![exp3_DBMS-7](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/fd5d6858-ee23-44a2-86ef-e0459b0a491f)
 
+![270771306-4bf9b80e-b31d-486e-87b5-5462e60e6e2f](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/ddc3c4ba-11e6-4672-aa5e-1da6adb27873)
 
 ### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
 
-
 ### QUERY:
-```
-SQL> SELECT customer1.cust_name AS "Customer Name", customer1.city AS "Customer City", salesman1.commission AS "Commission" FROM salesman1 INNER JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id WHERE salesman1.commission > 0.13;
-```
 
+![270772008-6b4b7f1a-e1fa-41eb-abfc-d544b005a00e](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/6df12dbf-a3ae-4310-a765-9b00577e028a)
 
 ### OUTPUT:
-![exp3_DBMS-8](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/04d45e5c-1db2-4009-a9ff-2e056db19c7a)
 
+![270772054-031553d8-640c-4306-9f12-cd4a6c6a68ed](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/8b213a97-dc47-46f1-a5ea-7cea08a0a992)
 
 ### Q9) Perform Natural join on both tables
 
 ### QUERY:
-```
-SQL> SELECT * FROM customer1 NATURAL JOIN salesman1;
-```
+
+![270772360-a9609769-7404-4c74-909b-53d5610ea79a](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/aebde1dd-d42d-4ea8-a539-ec67932e6f02)
 
 ### OUTPUT:
-![exp3_DBMS-9](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/4133eb26-fc44-4903-9629-6ce7863c07a6)
 
+![270772421-1026e100-8a70-45e8-bdcb-3d51efdfa1fc](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/19f96e17-6297-42c1-a39f-6cc1862fa87e)
 
 ### Q10) Perform Left and right join on both tables
 
 ### QUERY:
-```
-SQL> SELECT * FROM salesman1 LEFT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
-SQL> SELECT * FROM salesman1 RIGHT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
-```
+### Left Join:
 
+![270849330-7915ee92-d1e0-4528-be68-4bbe6fd7a11c](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/3a8a4353-c210-4757-94da-1c8ba13a3117)
+
+### Right Join:
+
+![image](https://github.com/DhanushPalani/EX-3-SubQueries-Views-and-Joins/assets/121594640/8be146f2-c02a-4c31-8dd7-a759a92e69c3)
 
 ### OUTPUT:
-![exp3_DBMS-10(1)](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/b0ae5fee-adb6-41d2-938e-1244e2956504)
 
+### Left Join:
 
-![exp3_DBMS-10(2)](https://github.com/Yuva2005raj/EX-3-SubQueries-Views-and-Joins/assets/118343998/464eec89-10b8-4ffe-af85-c12146966ff3)
+![270773161-f7e2b17f-33d1-404c-8a43-83636dc8c552](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/eaa2199e-49fe-4e8c-855f-6c4ff801fae5)
 
+### Right Join:
 
+![270773439-43cc7093-35af-4c4b-8854-068a0f0b34d1](https://github.com/22008539/EX-3-SubQueries-Views-and-Joins/assets/118707617/5379867e-4fbe-4adb-8453-f1e494f75988)
 ## RESULT:
-Thus, DDL queries like views and joins using SQL has been implemented successfully.
+Hence successfully created a manager database and execute DML queries using SQL.
